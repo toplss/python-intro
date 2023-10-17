@@ -4,8 +4,12 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from .models import Post
 from .serializer import PostSerializer
-from django.core.paginator import Paginator
 import datetime as dt
+from django.http import HttpResponse, JsonResponse
+from django.core.paginator import Paginator
+from bs4 import BeautifulSoup
+import requests
+
 
 
 # Create your views here.
@@ -29,3 +33,14 @@ def create_post(request):
 
     Post.objects.create(title=title, author=author, coverimg=coverimg, created_at=created_at)
     return Response('success');
+
+
+@api_view(['GET'])
+def crawl_data(request):
+    url = 'https://www.naver.com/'
+    response = requests.get(url)
+    html = response.text
+    soup = BeautifulSoup(html, 'html.parser')
+    print(soup)
+
+    return Response('ok');
