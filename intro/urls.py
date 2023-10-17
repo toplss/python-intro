@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api', include('home.urls')),
+    path('api/webtoon', include('web_toon.urls')),
 ]
