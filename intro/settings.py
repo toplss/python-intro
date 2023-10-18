@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'oauth2_provider',
     'rest_framework',
     'home',
-    'web_toon'
+    'web_toon',
+    'user',
 ]
 
 MIDDLEWARE = [
